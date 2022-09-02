@@ -2,6 +2,7 @@
 
 module.exports = (api) => {
   return {
+    plugins: ['@vue/babel-plugin-jsx'],
     presets: [
       [
         '@quasar/babel-preset-app',

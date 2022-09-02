@@ -75,7 +75,22 @@ module.exports = configure(function (ctx) {
 
       // https://v2.quasar.dev/quasar-cli-webpack/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      // chainWebpack(chain) {},
+      chainWebpack(chain) {
+        chain.resolve.extensions.add('.jsx').add('.tsx');
+        chain.module
+          .rule('tsx')
+          .test(/\.tsx$/)
+          .use('babel-loader')
+          .loader('babel-loader')
+          .end()
+          .use('ts-loader')
+          .loader('ts-loader')
+          .options({
+            transpileOnly: true,
+            appendTsSuffixTo: ['\\.vue$'],
+            happyPackMode: false,
+          });
+      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-chain-js#Property%3A-devServer
