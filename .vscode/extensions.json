@@ -3,8 +3,8 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
-    "johnsoncodehk.volar",
-    "wayou.vscode-todo-highlight"
+    "wayou.vscode-todo-highlight",
+    "Vue.volar"
   ],
   "unwantedRecommendations": [
     "octref.vetur",
