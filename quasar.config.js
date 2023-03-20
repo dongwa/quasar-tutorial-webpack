@@ -56,9 +56,10 @@ module.exports = configure(function (ctx) {
         path: ctx.dev ? '.env.dev' : '.env.prod',
       }).parsed,
 
+      vueRouterMode:'history',
       // transpile: false,
-      // publicPath: '/',
-
+      publicPath: '/webpack',
+      distDir:'dist/quasar-webpack',
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.
