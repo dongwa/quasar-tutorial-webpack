@@ -1,14 +1,14 @@
 import { RouteRecordRaw } from 'vue-router';
 
+import { routes as children } from 'vue-router/auto/routes'
+
+console.log('children',children)
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'coms', component: () => import('pages/QuaComs.vue') },
-      { path: 'jsx', component: () => import('pages/JsxCom') },
-    ],
+    children,
   },
 
   // Always leave this as last one,
@@ -20,3 +20,25 @@ const routes: RouteRecordRaw[] = [
 ];
 
 export default routes;
+
+
+export function createMenus(routes?:RouteRecordRaw[]):Menu[]{
+  // @ts-ignore
+  return routes?.map((route)=>({
+    path:route.path,
+    title:route.name,
+    icon:'',
+    children: createMenus(route.children)
+  }))
+}
+
+export function generateMenus(){
+  return createMenus(children)
+}
+
+export interface Menu {
+  path: string;
+  title: string;
+  icon: string;
+  children?: Menu[];
+}

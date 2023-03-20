@@ -2,8 +2,7 @@
   <q-page padding>
     <div class="q-pa-md q-gutter-sm">
       <q-btn
-        ref="myBtn"
-        to="/"
+        to="/flex"
         target="_blank"
         dense
         push
@@ -28,6 +27,7 @@
         label="Brown 5"
       />
       <q-btn
+        ref="myBtn"
         @click="handleClick"
         color="deep-orange"
         glossy
@@ -39,13 +39,32 @@
   </q-page>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { QBtn } from 'quasar';
+import { ref } from 'vue';
+
+let myBtn = ref<QBtn>();
+
+let isLaading = ref(false);
+let percent = ref(0);
+function handleClick() {
+  isLaading.value = !isLaading.value;
+  setInterval(() => {
+    percent.value += 10;
+  }, 200);
+}
+function hClick() {
+  console.log('click', myBtn.value);
+  myBtn.value?.click();
+  // if (myBtn.value) myBtn.value.click();
+}
+</script>
+
+<!-- <script setup>
 import { ref } from 'vue';
 
 let myBtn = ref();
-// function aaa() {
-//   alert('sss');
-// }
+
 let isLaading = ref(false);
 let percent = ref(0);
 function handleClick() {
@@ -58,4 +77,24 @@ function hClick() {
   console.log('click', myBtn.value);
   myBtn.value?.click();
 }
-</script>
+</script> -->
+
+<!-- <script>
+// options APi
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  methods: {
+    // handleClick() {
+    //   isLaading.value = !isLaading.value;
+    //   setInterval(() => {
+    //     percent.value += 10;
+    //   }, 200);
+    // },
+    hClick() {
+      const dom = this.$refs.myBtn;
+      dom.click();
+    },
+  },
+});
+</script> -->

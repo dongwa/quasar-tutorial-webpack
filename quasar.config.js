@@ -11,14 +11,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const { configure } = require('quasar/wrappers');
-
+const AutoTouter = require('unplugin-vue-router/webpack').default
 module.exports = configure(function (ctx) {
   return {
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
     supportTS: {
       tsCheckerConfig: {
         eslint: {
-          enabled: true,
+          enabled: false,
           files: './src/**/*.{ts,tsx,js,jsx,vue}',
         },
       },
@@ -90,6 +90,8 @@ module.exports = configure(function (ctx) {
             appendTsSuffixTo: ['\\.vue$'],
             happyPackMode: false,
           });
+
+        chain.plugin('auto-router').use(AutoTouter())
       },
     },
 

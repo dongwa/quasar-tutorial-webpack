@@ -2,7 +2,7 @@
   "extends": "@quasar/app-webpack/tsconfig-preset",
   "compilerOptions": {
     "jsx": "preserve",
-    "baseUrl": "."
+    "baseUrl": ".",
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "typed-router.d.ts"]
 }
